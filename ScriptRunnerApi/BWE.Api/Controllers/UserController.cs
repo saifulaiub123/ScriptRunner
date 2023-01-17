@@ -22,34 +22,34 @@ namespace BWE.Api.Controllers
         }
 
 
-        [HttpGet]
-        [Route("GetUsers")]
-        public async Task<IActionResult> GetUsers()
-        {
-            var users = await _userManager.Users.Include(x => x.UserRoles).ThenInclude(x => x.Role).Where(x => x.Status == 1).ToListAsync();        
-            return Ok(users);
-        }
-        [HttpGet]
-        [Route("GetUserById")]
-        public async Task<IActionResult> GetUserById(int id)
-        {
-            var user = await _userService.GetUserById(id);
-            return Ok(user);
-        }
-        [HttpPatch]
-        [Route("UpdateUser")]
-        public async Task<IActionResult> UpdateUser(UserModel user)
-        {
-            await _userService.UpdateUser(user);
-            return Ok();
-        }
-        [HttpPatch]
-        [Route("ChangePassword")]
-        public async Task<IActionResult> ChangePassword(ChangePasswordModel changePasswordModel)
-        {
-            var user = await _userManager.FindByIdAsync(changePasswordModel.Id.ToString());
-            await _userManager.ChangePasswordAsync(user, changePasswordModel.CurrentPassword, changePasswordModel.NewPassword);
-            return Ok();
-        }
+        //[HttpGet]
+        //[Route("GetUsers")]
+        //public async Task<IActionResult> GetUsers()
+        //{
+        //    var users = await _userManager.Users.Include(x => x.UserRoles).ThenInclude(x => x.Role).Where(x => x.Status == 1).ToListAsync();        
+        //    return Ok(users);
+        //}
+        //[HttpGet]
+        //[Route("GetUserById")]
+        //public async Task<IActionResult> GetUserById(int id)
+        //{
+        //    var user = await _userService.GetUserById(id);
+        //    return Ok(user);
+        //}
+        //[HttpPatch]
+        //[Route("UpdateUser")]
+        //public async Task<IActionResult> UpdateUser(UserModel user)
+        //{
+        //    await _userService.UpdateUser(user);
+        //    return Ok();
+        //}
+        //[HttpPatch]
+        //[Route("ChangePassword")]
+        //public async Task<IActionResult> ChangePassword(ChangePasswordModel changePasswordModel)
+        //{
+        //    var user = await _userManager.FindByIdAsync(changePasswordModel.Id.ToString());
+        //    await _userManager.ChangePasswordAsync(user, changePasswordModel.CurrentPassword, changePasswordModel.NewPassword);
+        //    return Ok();
+        //}
     }
 }
